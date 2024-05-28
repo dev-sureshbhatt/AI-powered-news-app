@@ -3,9 +3,10 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const NewsList = require('./models/newsList.js')
 const {scrapeNewsList} = require('./utils/scraper/fetchNewsList.js')
-
+const cors = require('cors')
 
 const app = express()
+app.use(cors({origin: 'http://localhost:5173'}))
 
 app.listen(4000, ()=>{
 
@@ -28,7 +29,7 @@ mongoose
 
 //mentioning the URL(s) to scrape 
 const urlToScrape = ['https://aninews.in/topic/detail/breaking-topics/']
-// scrapeNewsList(urlToScrape[0])
+scrapeNewsList(urlToScrape[0])
 
 
 app.get('/breaking', async (req, res) => {

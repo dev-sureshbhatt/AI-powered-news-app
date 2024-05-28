@@ -19,7 +19,7 @@ fetch("https://openrouter.ai/api/v1/chat/completions", {
   body: JSON.stringify({
     "model": "gryphe/mythomist-7b:free",
     "messages": [
-      {"role": "user", "content": `Please rewrite this news content so that I can publish it on another website without facing plagiarism. Just provide the content that I can pick and no extra suggestion       
+      {"role": "user", "content": `Please rewrite this news content so that I can publish it on another website without facing plagiarism. Just provide the content under 60-100 words covering main information       
       ${content}`},
     ],
   })
