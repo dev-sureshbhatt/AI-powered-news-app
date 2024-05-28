@@ -27,8 +27,9 @@ mongoose
 
 
 //mentioning the URL(s) to scrape 
-// const urlToScrape = ['https://aninews.in/topic/detail/breaking-topics/']
+const urlToScrape = ['https://aninews.in/topic/detail/breaking-topics/']
 // scrapeNewsList(urlToScrape[0])
+
 
 app.get('/breaking', async (req, res) => {
     try {
@@ -36,7 +37,8 @@ app.get('/breaking', async (req, res) => {
         
         // Map the documents to only include the required fields
         const filteredNews = getNews.map(news => ({
-            title: news.title,
+            title: news.fullTitle,
+            newsContent: news.summarizedContent,
             image: news.image,
             link: news.link,
             updatedTime: news.updatedTime,

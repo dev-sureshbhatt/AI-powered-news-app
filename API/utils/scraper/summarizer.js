@@ -1,6 +1,5 @@
-
-
 require('dotenv').config()
+console.log(process.env.API)
 
 function summarizer(data){
 
@@ -28,7 +27,7 @@ fetch("https://openrouter.ai/api/v1/chat/completions", {
 .then(response => response.json())
 .then((data) => 
     {
-        // console.log("returning this data back", data.choices[0].message.content)
+        // console.log("returning this data back", data)
         resolve(data.choices[0].message.content)
     }
 )

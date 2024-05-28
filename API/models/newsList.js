@@ -5,6 +5,15 @@ const newsListSchema = new mongoose.Schema({
     type: String,
     required: true, 
   },
+  fullTitle: {
+    type:String,
+  },
+  fetchedContent: {
+    type:String
+  },
+  summarizedContent: {
+    type:String
+  },
   image: {
     type: String,
     // required: true,
