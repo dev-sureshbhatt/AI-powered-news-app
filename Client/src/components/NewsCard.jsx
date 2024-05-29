@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useEffect, useState}from 'react'
 import { Link } from 'react-router-dom'
 import {format} from 'date-fns'
 
 const NewsCard = ({title, description, image, link, publishTime}) => {
+
+
+
+    
   return (
     <div className='flex items-center text-left justify-center'>
     <div className='flex w-5/6 flex-wrap shadow-lg hover:shadow-2xl px-5 py-5'>

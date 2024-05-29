@@ -29,7 +29,8 @@ mongoose
 
 //mentioning the URL(s) to scrape 
 const urlToScrape = ['https://aninews.in/topic/detail/breaking-topics/']
-scrapeNewsList(urlToScrape[0])
+
+// scrapeNewsList(urlToScrape[0])
 
 
 app.get('/breaking', async (req, res) => {
