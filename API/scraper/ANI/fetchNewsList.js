@@ -1,8 +1,8 @@
 const { default: axios } = require('axios');
 const cheerio = require('cheerio');
-const NewsList = require('./../../models/newsList.js');
-const {getNewsSummary} = require('./scrapeNews.js');
-const { summarizer } = require('./summarizer.js');
+const NewsList = require('../../models/newsList.js')
+const {getNewsSummary} = require('./scrapeNews.js')
+const { summarizer } = require('../../AIHelper/summarizer.js')
 
 // Configuration and constants
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3';

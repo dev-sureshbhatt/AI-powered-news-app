@@ -1,4 +1,22 @@
 const puppeteer = require('puppeteer');
+const NewsList = require('../../models/newsList.js')
+const mongoose = require('mongoose')
+
+//temp for mongoose to test scraper//
+require('dotenv').config()
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log('mongoose connected');
+  })
+  .catch((err) => {
+    console.log(err, 'something went wrong connecting MONGOOSE');
+  });
+
+
+
+
 
 async function fetchItemListJSONLD(url) {
   const browser = await puppeteer.launch();
@@ -48,12 +66,36 @@ async function fetchItemListJSONLD(url) {
 const url = 'https://www.hindustantimes.com/india-news';
 
 fetchItemListJSONLD(url).then(itemListJSONLD => {
+
+
   if (itemListJSONLD) {
 
     // Extract desired details
     if (itemListJSONLD.itemListElement) {
       itemListJSONLD.itemListElement.forEach(item => {
-        console.log(`Position: ${item.position}`);
+
+
+
+        async function save(){
+
+            const listToSave = new NewsList({
+                title: item.name,
+                fullTitle:item.name,
+                fetchedContent: "lorem ipsum",
+                summarizedContent: "lorem upsum",
+                image: "ksjdkjsd",
+                link: item.url,
+                updatedTime: "2024-05-28T08:23:57.537+00:00",
+                author: "Hindustan Times",
+                scrapedFrom: "Hindustan Times" 
+    
+            })
+            const savedItem = await listToSave.save()
+            console.log(savedItem)
+        }
+
+        save()
+        
         console.log(`URL: ${item.url}`);
         console.log(`Name: ${item.name}`);
         console.log(`Description: ${item.description}`);
@@ -64,3 +106,8 @@ fetchItemListJSONLD(url).then(itemListJSONLD => {
     console.log('No data received.'); // Debugging output
   }
 });
+
+
+function fetchSingleNewsFromHT(url){
+    
+}
