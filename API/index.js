@@ -1,8 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
-const NewsList = require('./models/newsList.js')
-const {scrapeNewsList} = require('./utils/scraper/fetchNewsList.js')
+const NewsList = require('./models/newsList.js'
+)
+const {scrapeNewsList} = require('./scraper/ANI/fetchNewsList.js')
 const cors = require('cors')
 
 const app = express()

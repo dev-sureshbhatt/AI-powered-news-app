@@ -1,7 +1,7 @@
 require('dotenv').config()
 console.log(process.env.API)
 
-function summarizer(content){
+function titleCurator(title, content){
 
 return new Promise((resolve, reject)=> {
 
@@ -19,14 +19,14 @@ fetch("https://openrouter.ai/api/v1/chat/completions", {
   body: JSON.stringify({
     "model": "nousresearch/nous-capybara-7b:free",
     "messages": [
-      {"role": "user", "content": `Can you quickly explain me the summary of this news? Just provide the summary under 60 or 80 words max. Here is the news: ${content}`},
+      {"role": "user", "content": `Provide a relevant and engaging title for this content: {title: ${title}, content: ${content}}`},
     ],
   })
 })
 .then(response => response.json())
 .then((data) => 
     {
-        console.log("returning this data back", data)
+        // console.log("returning this data back", data)
         resolve(data.choices[0].message.content)
     }
 )
@@ -45,5 +45,5 @@ fetch("https://openrouter.ai/api/v1/chat/completions", {
 }
 
 
-module.exports = {summarizer}
+module.exports = {titleCurator}
 
